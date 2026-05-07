@@ -99,7 +99,6 @@ async def contacto_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "📞 *Datos de Contacto*\n\n"
         f"Nombre: {ho['nombre']}\n"
-        f"Dirección: {ho['direccion']}\n"
         f"Teléfono: {ho['telefono']}\n"
         f"Email: {ho['email']}",
         parse_mode='Markdown'

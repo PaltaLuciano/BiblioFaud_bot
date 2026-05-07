@@ -74,12 +74,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         for c in cat:
             response += f"• {c}\n"
 
-    elif any(word in text_lower for word in ["contacto", "telefono", "direccion", "email", "donde"]):
+    elif any(word in text_lower for word in ["contacto", "telefono", "email", "donde"]):
         ho = BIBLIOTECA_INFO
         response = (
             "📞 *Datos de Contacto*\n\n"
             f"Nombre: {ho['nombre']}\n"
-            f"Dirección: {ho['direccion']}\n"
             f"Teléfono: {ho['telefono']}\n"
             f"Email: {ho['email']}"
         )
