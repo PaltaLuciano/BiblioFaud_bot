@@ -43,12 +43,7 @@ BIBLIOTECA_INFO = {
     "categorias": [
         "Arquitectura",
         "Urbanismo",
-        "Diseño",
-        "Historia del Arte",
-        "Sociología",
-        "Psicología",
-        "Ciencias de la Comunicación",
-        "Educación"
+        "Diseño"
     ],
    
 }
