@@ -1,8 +1,7 @@
 BIBLIOTECA_INFO = {
     "nombre": "BiblioFAUD",
-    "direccion": "Av. Principal 123, Ciudad",
-    "telefono": "011-1234-5678",
-    "email": "biblio@faud.edu.ar",
+    "telefono": "9 264 404-3030",
+    "email": "biblioteca.faud.unsj@gmail.com",
     "horarios": {
     "lunes_a_viernes": "8:00 - 20:00",
     "sabados": "Cerrado",
