@@ -43,7 +43,8 @@ BIBLIOTECA_INFO = {
     "categorias": [
         "Arquitectura",
         "Urbanismo",
-        "Diseño"
+        "Diseño Gráfico",
+        "Diseño Industrial"
     ],
    
 }
