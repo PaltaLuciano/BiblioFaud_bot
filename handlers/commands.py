@@ -8,15 +8,15 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Hola. Soy el asistente virtual de BiblioFAUD.\n\n"
         "Puedo ayudarte con:\n"
         "- Horarios\n"
-        "- Reglas\n"
+        "- Reglamento\n"
         "- Préstamo de libros\n"
-        "- Consulta de tesis\n"
+        "- Consulta de TFG y Tesis\n"
         "- Socios\n"
         "- Búsqueda de materiales"
     )
 
-async def tesis_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    t = BIBLIOTECA_INFO["consulta_tesis"]
+async def tfg_tesis_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    t = BIBLIOTECA_INFO["consulta_tfg_tesis"]
     await update.message.reply_text(
         "📝 *Consulta de Tesis*\n\n"
         f"{t['descripcion']}:\n"
@@ -29,11 +29,11 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "Comandos disponibles:\n\n"
         "/start - Iniciar conversación\n"
         "/horarios - Ver horarios de atención\n"
-        "/reglas - Normas de la biblioteca\n"
+        "/reglamento - Normas de la biblioteca\n"
         "/prestamos_libros - Información sobre préstamos de libros\n"
         "/busqueda - Cómo buscar materiales\n"
         "/categorias - Categorías de libros disponibles\n"
-        "/tesis - Consulta de tesis digitales\n"
+        "/tfg_tesis - Consulta de TFG y Tesis\n"
         "/contacto - Datos de contacto\n"
         "/socios - Cómo hacerse socio de la biblioteca\n"
         "/help - Ver este mensaje de ayuda"
@@ -51,8 +51,8 @@ async def horarios_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 
-async def reglas_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    reglas = BIBLIOTECA_INFO["reglas"]
+async def reglamento_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    reglas = BIBLIOTECA_INFO["reglamento"]
     texto = "📋 *Normas de la Biblioteca*\n\n"
     for i, regla in enumerate(reglas, 1):
         texto += f"{i}. {regla}\n"

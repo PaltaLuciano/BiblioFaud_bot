@@ -10,12 +10,12 @@ from handlers import (
     start_command,
     help_command,
     horarios_command,
-    reglas_command,
+    reglamento_command,
     prestamos_libros_command,
     busqueda_command,
     categorias_command,
     contacto_command,
-    tesis_command,
+    tfg_tesis_command,
     socios_command,
     handle_message,
 )
@@ -35,11 +35,11 @@ def main():
     app.add_handler(CommandHandler("start", start_command))
     app.add_handler(CommandHandler("help", help_command))
     app.add_handler(CommandHandler("horarios", horarios_command))
-    app.add_handler(CommandHandler("reglas", reglas_command))
+    app.add_handler(CommandHandler("reglamento", reglamento_command))
     app.add_handler(CommandHandler("prestamos_libros", prestamos_libros_command))
     app.add_handler(CommandHandler("busqueda", busqueda_command))
     app.add_handler(CommandHandler("categorias", categorias_command))
-    app.add_handler(CommandHandler("tesis", tesis_command))
+    app.add_handler(CommandHandler("tfg_tesis", tfg_tesis_command))
     app.add_handler(CommandHandler("socios", socios_command))
     app.add_handler(CommandHandler("contacto", contacto_command))
     

@@ -14,11 +14,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "Hola. Soy el asistente virtual de BiblioFAUD.\n\n"
             "Puedo ayudarte con:\n"
             "- Horarios\n"
-            "- Reglas\n"
+            "- Búsqueda de materiales\n"
             "- Préstamo de libros\n"
-            "- Consulta de tesis\n"
+            "- Consulta de TFG y Tesis\n"
             "- Socios\n"
-            "- Búsqueda de materiales"
+            "- Reglamento"
         )
 
     elif any(word in text_lower for word in ["horario", "hora", "atencion", "abra", "cierra"]):
@@ -31,10 +31,28 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
 
     elif any(word in text_lower for word in ["regla", "norma", "prohibido", "permitido", "silencio"]):
-        reglas = BIBLIOTECA_INFO["reglas"]
-        response = "📋 *Reglas de la Biblioteca*\n\n"
+        reglas = BIBLIOTECA_INFO["reglamento"]
+        response = "📋 *Reglamento de la Biblioteca*\n\n"
         for i, regla in enumerate(reglas, 1):
             response += f"{i}. {regla}\n"
+
+    elif any(word in text_lower for word in ["asociar", "asociarme", "asociarse", "hacerme socio", "quiero ser socio", "no soy socio", "quiero asociarme", "como me asocio"]):
+        s = BIBLIOTECA_INFO["socios"]
+        response = (
+            "🪪 *Asociarse a la Biblioteca*\n\n"
+            f"{s['descripcion']}"
+        )
+
+    elif any(word in text_lower for word in ["soy socio", "ya soy socio", "socio registrado", "soy socia", "ya soy socia"]):
+        p = BIBLIOTECA_INFO["prestamo_libros"]
+        response = (
+            f"📚 *Préstamo de Libros*\n\n"
+            f"• Máximo: {p['maximo']} libros\n"
+            f"• Duración: {p['duracion']}\n"
+            f"• Renovable: {p['renovable']}\n"
+            f"• Requisitos: {p['requisitos']}\n\n"
+            f"Aquí está el catálogo: {p['catalogo_url']}"
+        )
 
     elif any(word in text_lower for word in ["prestamo de libros", "prestamo libro", "prestamos libro", "prestar libro", "llevar libro", "devolver libro", "vencimiento", "catalogo", "buscar libro"]):
         p = BIBLIOTECA_INFO["prestamo_libros"]
@@ -47,8 +65,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"Aquí está el catálogo: {p['catalogo_url']}"
         )
 
-    elif any(word in text_lower for word in ["tesis", "tesis de grado", "posgrado", "documentos academicos", "repositorio"]):
-        t = BIBLIOTECA_INFO["consulta_tesis"]
+    elif any(word in text_lower for word in ["tesis", "tfg", "tesis de grado", "posgrado", "documentos academicos", "repositorio"]):
+        t = BIBLIOTECA_INFO["consulta_tfg_tesis"]
         response = (
             "📝 *Consulta de Tesis*\n\n"
             f"{t['descripcion']}:\n"

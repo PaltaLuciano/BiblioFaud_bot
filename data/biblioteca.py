@@ -7,7 +7,7 @@ BIBLIOTECA_INFO = {
     "sabados": "Cerrado",
     "domingos": "Cerrado"
     },
-    "reglas": [
+    "reglamento": [
         "Mantener silencio en las áreas de estudio",
         "No está permitido comer ni beber dentro de la biblioteca",
         "Silenciar el teléfono celular",
@@ -24,8 +24,8 @@ BIBLIOTECA_INFO = {
         "catalogo_url": "https://biblioteca.unsj.edu.ar/" 
     },
     
-    "consulta_tesis": {
-    "descripcion": "Accede a la versión digital de las tesis de grado, posgrado y otros documentos académicos",
+    "consulta_tfg_tesis": {
+    "descripcion": "Accede a la versión digital de TFG, tesis de grado, posgrado y otros documentos académicos",
     "url": "http://huru.unsj.edu.ar/handle/123456789/5"
 },
 
