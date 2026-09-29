@@ -1,0 +1,17 @@
+cd biblioteca_bot //Buscar el directorio a usar
+pip install -r requirements.txt
+python main.py
+
+//En caso de error en telegram
+pip install --upgrade python-telegram-bot
+
+//Modelos para chatbot ,MML,que se pueden usar en .evn
+OPENROUTER_MODEL=meta-llama/llama-3-8b-instruct // Esta es la version paga, responde bien
+OPENROUTER_MODEL=meta-llama/llama-3-8b-instruct:free //Esta es la misma pero no paga, tiene limite de 20 request por minuto máximo. - En el caso de la facultad como no va a superar 20 request por minuto es buena opción. - Aparte tiene limite lo que impide que quiera alguien romper el asistente con spam.
+
+//Tener en cuenta a la hora de elegir Modelos
+Encontré la solución perfecta. OpenRouter tiene un modelo especial que elige automáticamente el mejor modelo gratuito disponible en cada momento:
+dotenv:
+OPENROUTER_MODEL=openrouter/free
+Esto es ideal porque nunca vas a tener errores de "no endpoints found" — si un modelo se cae, automáticamente usa otro gratuito.
+Cambiá esa línea en tu .env, reiniciá el bot y debería funcionar sin problemas.
