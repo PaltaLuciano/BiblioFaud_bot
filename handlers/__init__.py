@@ -9,6 +9,7 @@ from .commands import (
     contacto_command,
     tfg_tesis_command,
     socios_command,
+    perdida_material_command,
 )
 
 from .messages import handle_message

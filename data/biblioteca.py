@@ -40,6 +40,10 @@ BIBLIOTECA_INFO = {
     "descripcion": "Para poder llevar material a domicilio, necesitas venir a biblioteca con DNI y certificado de regularidad."
 },
 
+"perdida_material": {
+    "descripcion": "En caso de extravio del material que han solicitado, deben presentar una nota informando de la situacion, adjuntando el certificado de extravio brindado por la policia"
+},
+
     "categorias": [
         "Arquitectura",
         "Urbanismo",

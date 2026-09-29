@@ -17,6 +17,7 @@ from handlers import (
     contacto_command,
     tfg_tesis_command,
     socios_command,
+    perdida_material_command,
     handle_message,
 )
 
@@ -42,6 +43,7 @@ def main():
     app.add_handler(CommandHandler("tfg_tesis", tfg_tesis_command))
     app.add_handler(CommandHandler("socios", socios_command))
     app.add_handler(CommandHandler("contacto", contacto_command))
+    app.add_handler(CommandHandler("perdida_material", perdida_material_command))
     
     # Mensajes de texto
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))

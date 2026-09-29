@@ -12,7 +12,8 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "- Préstamo de libros\n"
         "- Consulta de TFG y Tesis\n"
         "- Socios\n"
-        "- Búsqueda de materiales"
+        "- Búsqueda de materiales\n"
+        "- Pérdida de material Bibliográfico"
     )
 
 async def tfg_tesis_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -36,6 +37,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "/tfg_tesis - Consulta de TFG y Tesis\n"
         "/contacto - Datos de contacto\n"
         "/socios - Cómo hacerse socio de la biblioteca\n"
+        "/perdida_material - Pérdida de material Bibliográfico\n"
         "/help - Ver este mensaje de ayuda"
     )
 
@@ -91,6 +93,15 @@ async def socios_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "🪪 *Socios*\n\n"
         f"{s['descripcion']}",
+        parse_mode='Markdown'
+    )
+
+
+async def perdida_material_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    pe = BIBLIOTECA_INFO["perdida_material"]
+    await update.message.reply_text(
+        "📕 *Pérdida de material Bibliográfico*\n\n"
+        f"{pe['descripcion']}",
         parse_mode='Markdown'
     )
 

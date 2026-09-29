@@ -18,7 +18,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "- Préstamo de libros\n"
             "- Consulta de TFG y Tesis\n"
             "- Socios\n"
-            "- Reglamento"
+            "- Reglamento\n"
+            "- Pérdida de material Bibliográfico"
         )
 
     elif any(word in text_lower for word in ["horario", "hora", "atencion", "abra", "cierra"]):
@@ -35,6 +36,13 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         response = "📋 *Reglamento de la Biblioteca*\n\n"
         for i, regla in enumerate(reglas, 1):
             response += f"{i}. {regla}\n"
+
+    elif any(word in text_lower for word in ["perdida", "pérdida", "perdi", "perdí", "extravio", "extravío", "me robaron", "robo", "robado", "no devolvi", "no devolví", "material perdido", "libro perdido", "libro robado"]):
+        pe = BIBLIOTECA_INFO["perdida_material"]
+        response = (
+            "📕 *Pérdida de material Bibliográfico*\n\n"
+            f"{pe['descripcion']}"
+        )
 
     elif any(word in text_lower for word in ["asociar", "asociarme", "asociarse", "hacerme socio", "quiero ser socio", "no soy socio", "quiero asociarme", "como me asocio"]):
         s = BIBLIOTECA_INFO["socios"]
