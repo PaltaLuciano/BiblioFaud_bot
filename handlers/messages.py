@@ -37,7 +37,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         for i, regla in enumerate(reglas, 1):
             response += f"{i}. {regla}\n"
 
-    elif any(word in text_lower for word in ["perdida", "pérdida", "perdi", "perdí", "extravio", "extravío", "me robaron", "robo", "robado", "no devolvi", "no devolví", "material perdido", "libro perdido", "libro robado"]):
+    elif any(word in text_lower for word in ["perdida", "pérdida", "perdi", "perdí", "pierdo", "extravio", "extravío", "extravie", "extravié", "me robaron", "robo", "robado", "no devolvi", "no devolví", "material perdido", "libro perdido", "libro robado", "si pierdo", "pierdo el material", "si extravío", "si extravio", "pierdo el libro"]):
         pe = BIBLIOTECA_INFO["perdida_material"]
         response = (
             "📕 *Pérdida de material Bibliográfico*\n\n"
@@ -88,7 +88,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"{s['descripcion']}"
         )
 
-    elif any(word in text_lower for word in ["busqueda de materiales", "busqueda", "buscar", "material", "materiales", "catalogo", "libro disponible"]):
+    elif any(word in text_lower for word in ["busqueda de materiales", "busqueda", "buscar", "catalogo", "libro disponible"]):
         response = (
             "🔍Aquí puede realizar la búsqueda en esta página:\n\n"
             "https://biblioteca.unsj.edu.ar/"
