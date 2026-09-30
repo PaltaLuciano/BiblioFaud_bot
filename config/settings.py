@@ -5,12 +5,8 @@ TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 
-# Validaciones (evita errores silenciosos)
-if not TELEGRAM_TOKEN:
-    raise ValueError("Falta TELEGRAM_TOKEN en las variables de entorno")
-
-if not GEMINI_API_KEY:
-    raise ValueError("Falta GEMINI_API_KEY en las variables de entorno")
+# La validación de variables faltantes se hace en main.py para que el error
+# sea visible en los logs de Railway y no un traceback durante el import.
 
 # Modelos de respaldo
 GEMINI_FALLBACK_MODELS = [

@@ -1,11 +1,10 @@
 import os
 from dotenv import load_dotenv
 
-# Cargar variables de entorno SIEMPRE al inicio
 load_dotenv()
 
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
-from config import TELEGRAM_TOKEN
+from config import TELEGRAM_TOKEN, GEMINI_API_KEY, GEMINI_MODEL
 from handlers import (
     start_command,
     help_command,
@@ -22,17 +21,29 @@ from handlers import (
 )
 
 
-def main():
-    # Validación del token (evita errores silenciosos)
-    if not TELEGRAM_TOKEN:
-        raise ValueError("❌ TELEGRAM_TOKEN no está configurado. Revisá tu .env o variables de entorno.")
-
+def _check_config():
+    faltantes = [
+        nombre
+        for nombre, valor in (
+            ("TELEGRAM_TOKEN", TELEGRAM_TOKEN),
+            ("GEMINI_API_KEY", GEMINI_API_KEY),
+        )
+        if not valor
+    ]
+    if faltantes:
+        raise ValueError(
+            f"❌ Faltan variables de entorno: {', '.join(faltantes)}. "
+            "Configuralas en Railway (Variables) y reiniciá el servicio."
+        )
     print("🔑 TOKEN cargado correctamente")
+    print(f"🤖 Modelo de Gemini: {GEMINI_MODEL}")
 
-    # Crear aplicación
+
+def main():
+    _check_config()
+
     app = Application.builder().token(TELEGRAM_TOKEN).build()
 
-    # Comandos
     app.add_handler(CommandHandler("start", start_command))
     app.add_handler(CommandHandler("help", help_command))
     app.add_handler(CommandHandler("horarios", horarios_command))
@@ -44,15 +55,23 @@ def main():
     app.add_handler(CommandHandler("socios", socios_command))
     app.add_handler(CommandHandler("contacto", contacto_command))
     app.add_handler(CommandHandler("perdida_material", perdida_material_command))
-    
-    # Mensajes de texto
+
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
     print("📚 Bot de BiblioFAUD iniciado correctamente...")
-    
-    # Ejecutar bot
-    app.run_polling()
+
+    app.run_polling(drop_pending_updates=True)
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except ValueError as e:
+        print(str(e))
+    except RuntimeError as e:
+        print(f"⚠️  No se pudo iniciar el bot: {e}")
+        print("Si el error menciona 'Conflict' o 'terminated by other getUpdates', "
+              "hay otra instancia del bot corriendo con el mismo token. "
+              "Detenela localmente o revocá el token en @BotFather.")
+    except KeyboardInterrupt:
+        print("\n👋 Bot detenido.")

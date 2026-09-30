@@ -2,7 +2,7 @@ from google import genai
 from config import GEMINI_API_KEY, GEMINI_MODEL, GEMINI_FALLBACK_MODELS
 from data import BIBLIOTECA_INFO
 
-client = genai.Client(api_key=GEMINI_API_KEY)
+client = genai.Client(api_key=GEMINI_API_KEY) if GEMINI_API_KEY else None
 
 SYSTEM_INSTRUCTION = (
     "Sos el asistente virtual de la biblioteca universitaria BiblioFAUD. "
@@ -38,6 +38,9 @@ def _try_model(model: str, mensaje: str) -> str:
 
 
 def responder_con_gemini(mensaje: str) -> str:
+    if client is None:
+        return MENSAJE_NO_DISPONIBLE
+
     models_to_try = list(GEMINI_FALLBACK_MODELS)
     if GEMINI_MODEL not in models_to_try:
         models_to_try.insert(0, GEMINI_MODEL)
