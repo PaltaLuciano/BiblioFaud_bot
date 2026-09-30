@@ -46,7 +46,6 @@ BIBLIOTECA_INFO = {
 
     "categorias": [
         "Arquitectura",
-        "Urbanismo",
         "Diseño Gráfico",
         "Diseño Industrial"
     ],
